@@ -82,7 +82,12 @@ class PersonDetect:
     
     def draw_outputs(self, coords):
         '''
-        TODO: This method needs to be completed by you
+        Description: Drawing Boxes to the detection output according to box coordinates
+        params:
+            coords: Detected Person Coordinates
+        returns:
+            xmin, xmax: X-Axis Length of Box
+            ymin, ymax: Y-Axis Lenght of Box
         '''
         xmin = int(coords[0] * self.image.shape[1])
         ymin = int(coords[1] * self.image.shape[0])
@@ -94,7 +99,11 @@ class PersonDetect:
 
     def preprocess_outputs(self, outputs):
         '''
-        TODO: This method needs to be completed by you
+        Description: Takes in the outputs of the model and then transforms them to the image
+        params:
+            outputs: Model Outputs
+        returns:
+            coords: Here, array of detected objects with their coordinates.
         '''
         boxes = outputs[self.output_name]
         coords = []
@@ -107,7 +116,11 @@ class PersonDetect:
 
     def preprocess_input(self, image):
         '''
-        TODO: This method needs to be completed by you
+        Description: Preprocesses the Input image accordin to model size
+        params:
+            image: Input Image
+        returns:
+            processed_image: Image that can now be used with the model
         '''
         processed_image = cv2.resize(image, (self.input_shape[3], self.input_shape[2]))
         processed_image = processed_image.transpose((2,0,1))
